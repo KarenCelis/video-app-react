@@ -38,13 +38,23 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.(png|gif|jpg|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[hash].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: './public/index.html',
       filename: './index.html',
-
     }),
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
